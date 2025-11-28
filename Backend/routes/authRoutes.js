@@ -30,8 +30,8 @@ router.post("/signup", async (req, res) => {
       user: {
         id: user._id,
         name: user.name,
-        email: user.email
-      }
+        email: user.email,
+      },
     });
   } catch (err) {
     console.log(err);
@@ -41,13 +41,36 @@ router.post("/signup", async (req, res) => {
 
 // SIGN IN
 
-
 // LOGOUT
 router.post("/logout", (req, res) => {
   const token = req.headers.authorization?.split(" ")[1];
   if (token) blacklists.add(token);
 
   res.json({ msg: "Logged out successfully" });
+});
+
+router.post("/signin", async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email });
+  if (!user) return res.status(400).json({ msg: "Invalid credentials" });
+
+  const match = await bcrypt.compare(password, user.password);
+  if (!match) return res.status(400).json({ msg: "Invalid credentials" });
+
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    expiresIn: "1h",
+  });
+
+  res.json({
+    msg: "Login successful",
+    token,
+    user: {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+    },
+  });
 });
 
 export default router;
