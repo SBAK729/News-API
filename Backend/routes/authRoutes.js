@@ -1,0 +1,44 @@
+import express from "express";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import User from "../models/User.js";
+import blacklists from "../utils/tokenBlacklist.js";
+
+const router = express.Router();
+
+// SIGN UP
+router.post("/signup", async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+
+    let exists = await User.findOne({ email });
+    if (exists) return res.status(400).json({ msg: "Email already used" });
+
+    const hashed = await bcrypt.hash(password, 10);
+
+    const user = new User({ name, email, password: hashed });
+    await user.save();
+
+    // Automatically generate JWT token
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+
+    return res.json({
+      msg: "User created successfully",
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email
+      }
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: "Server error" });
+  }
+});
+
+// SIGN IN
+
+
