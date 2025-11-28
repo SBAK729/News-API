@@ -41,14 +41,6 @@ router.post("/signup", async (req, res) => {
 
 // SIGN IN
 
-// LOGOUT
-router.post("/logout", (req, res) => {
-  const token = req.headers.authorization?.split(" ")[1];
-  if (token) blacklists.add(token);
-
-  res.json({ msg: "Logged out successfully" });
-});
-
 router.post("/signin", async (req, res) => {
   const { email, password } = req.body;
 
@@ -73,4 +65,12 @@ router.post("/signin", async (req, res) => {
   });
 });
 
+
+// LOGOUT
+router.post("/logout", (req, res) => {
+  const token = req.headers.authorization?.split(" ")[1];
+  if (token) blacklists.add(token);
+
+  res.json({ msg: "Logged out successfully" });
+});
 export default router;
