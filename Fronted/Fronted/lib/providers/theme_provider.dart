@@ -1,32 +1,17 @@
 import 'package:flutter/material.dart';
-import '../theme/app_theme.dart'; // Make sure to import your AppTheme
 
 class ThemeProvider with ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.system;
-  Color _primaryColor = AppTheme.primaryColor; // Default primary color
 
   ThemeMode get themeMode => _themeMode;
-  Color get primaryColor => _primaryColor;
-  int get primaryColorValue => _primaryColor.value;
 
   void setThemeMode(ThemeMode mode) {
     _themeMode = mode;
     notifyListeners();
   }
 
-  void setPrimaryColor(Color color) {
-    _primaryColor = color;
-    notifyListeners();
-  }
-
-  void resetPrimaryColor() {
-    _primaryColor = AppTheme.primaryColor; // Reset to default primary color
-    notifyListeners();
-  }
-
   void toggleTheme() {
-    _themeMode =
-        _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+    _themeMode = _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
     notifyListeners();
   }
 

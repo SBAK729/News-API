@@ -35,7 +35,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
+    
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
@@ -55,34 +55,29 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 children: [
                   // App Info Card
                   _buildAppInfoCard(context),
-
+                  
                   const SizedBox(height: 24),
-
+                  
                   // API Status Card
                   _buildApiStatusCard(newsProvider),
-
+                  
                   const SizedBox(height: 24),
-
+                  
                   // Theme Settings Card
                   _buildThemeCard(themeProvider),
-
+                  
                   const SizedBox(height: 24),
-
-                  // Primary Colors Card
-                  _buildPrimaryColorsCard(themeProvider),
-
-                  const SizedBox(height: 24),
-
+                  
                   // API Configuration Card
                   _buildApiConfigCard(authProvider),
-
+                  
                   const SizedBox(height: 24),
-
+                  
                   // Authentication Card
                   _buildAuthCard(authProvider),
-
+                  
                   const SizedBox(height: 32),
-
+                  
                   // App Version
                   _buildAppVersion(),
                 ],
@@ -123,19 +118,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   Text(
                     'News Hub Ultra',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.w800,
-                        ),
+                      fontWeight: FontWeight.w800,
+                    ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     'Your personalized news aggregator',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.color
-                              ?.withOpacity(0.7),
-                        ),
+                      color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.7),
+                    ),
                   ),
                 ],
               ),
@@ -148,7 +139,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Widget _buildApiStatusCard(NewsProvider newsProvider) {
     final apiStats = newsProvider.getApiStats();
-
+    
     return Card(
       elevation: 8,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -168,13 +159,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Text(
                   'API Status',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ],
             ),
             const SizedBox(height: 16),
-
+            
             // API Sources
             _buildStatusItem(
               'Available Sources',
@@ -182,9 +173,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Icons.check_circle_rounded,
               Colors.green,
             ),
-
+            
             const SizedBox(height: 12),
-
+            
             // Daily Requests
             _buildStatusItem(
               'Daily Requests',
@@ -192,9 +183,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Icons.light,
               AppTheme.warningColor,
             ),
-
+            
             const SizedBox(height: 12),
-
+            
             // Individual API Status
             ..._buildApiStatusList(apiStats['status']),
           ],
@@ -203,8 +194,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Widget _buildStatusItem(
-      String title, String subtitle, IconData icon, Color color) {
+  Widget _buildStatusItem(String title, String subtitle, IconData icon, Color color) {
     return Row(
       children: [
         Container(
@@ -223,18 +213,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Text(
                 title,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
+                  fontWeight: FontWeight.w600,
+                ),
               ),
               Text(
                 subtitle,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.color
-                          ?.withOpacity(0.6),
-                    ),
+                  color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
+                ),
               ),
             ],
           ),
@@ -247,7 +233,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return status.entries.map((entry) {
       final apiName = entry.key;
       final apiData = entry.value as Map<String, dynamic>;
-
+      
       return Padding(
         padding: const EdgeInsets.only(top: 8),
         child: Row(
@@ -262,9 +248,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
               child: Text(
                 '$apiName: ${apiData['configured'] ? 'Connected' : 'Not configured'}',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color:
-                          apiData['configured'] ? Colors.green : Colors.orange,
-                    ),
+                  color: apiData['configured'] ? Colors.green : Colors.orange,
+                ),
               ),
             ),
           ],
@@ -293,13 +278,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Text(
                   'Theme',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ],
             ),
             const SizedBox(height: 16),
-
+            
             // Theme Options
             _buildThemeOption(
               'Light Mode',
@@ -307,18 +292,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ThemeMode.light,
               themeProvider,
             ),
-
+            
             const SizedBox(height: 12),
-
+            
             _buildThemeOption(
               'Dark Mode',
               Icons.dark_mode_rounded,
               ThemeMode.dark,
               themeProvider,
             ),
-
+            
             const SizedBox(height: 12),
-
+            
             _buildThemeOption(
               'System Default',
               Icons.phone_iphone_rounded,
@@ -331,10 +316,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Widget _buildThemeOption(String title, IconData icon, ThemeMode mode,
-      ThemeProvider themeProvider) {
+  Widget _buildThemeOption(String title, IconData icon, ThemeMode mode, ThemeProvider themeProvider) {
     final isSelected = themeProvider.themeMode == mode;
-
+    
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -345,9 +329,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: isSelected
-                ? AppTheme.primaryColor.withOpacity(0.1)
-                : Colors.transparent,
+            color: isSelected ? AppTheme.primaryColor.withOpacity(0.1) : Colors.transparent,
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: isSelected ? AppTheme.primaryColor : Colors.transparent,
@@ -358,13 +340,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             children: [
               Icon(
                 icon,
-                color: isSelected
-                    ? AppTheme.primaryColor
-                    : Theme.of(context)
-                        .textTheme
-                        .bodyMedium
-                        ?.color
-                        ?.withOpacity(0.6),
+                color: isSelected ? AppTheme.primaryColor : Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
                 size: 24,
               ),
               const SizedBox(width: 12),
@@ -372,10 +348,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: Text(
                   title,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontWeight:
-                            isSelected ? FontWeight.w600 : FontWeight.w400,
-                        color: isSelected ? AppTheme.primaryColor : null,
-                      ),
+                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                    color: isSelected ? AppTheme.primaryColor : null,
+                  ),
                 ),
               ),
               if (isSelected)
@@ -386,142 +361,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildPrimaryColorsCard(ThemeProvider themeProvider) {
-    final List<Color> primaryColors = [
-      Colors.blue, // Default blue
-      Colors.purple,
-      Colors.green,
-      Colors.orange,
-      Colors.red,
-      Colors.teal,
-      Colors.indigo,
-      Colors.pink,
-    ];
-
-    return Card(
-      elevation: 8,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Icon(
-                  Icons.color_lens_rounded,
-                  color: AppTheme.secondaryColor,
-                  size: 24,
-                ),
-                const SizedBox(width: 12),
-                Text(
-                  'Primary Color',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-
-            Text(
-              'Choose your primary color theme',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context)
-                        .textTheme
-                        .bodyMedium
-                        ?.color
-                        ?.withOpacity(0.7),
-                  ),
-            ),
-
-            const SizedBox(height: 16),
-
-            // Color Grid
-            GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4,
-                crossAxisSpacing: 12,
-                mainAxisSpacing: 12,
-                childAspectRatio: 1.2,
-              ),
-              itemCount: primaryColors.length,
-              itemBuilder: (context, index) {
-                final color = primaryColors[index];
-                final isSelected =
-                    themeProvider.primaryColorValue == color.value;
-
-                return Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(16),
-                    onTap: () {
-                      themeProvider.setPrimaryColor(color);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: color,
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(
-                          color: isSelected ? Colors.white : Colors.transparent,
-                          width: 3,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: color.withOpacity(0.4),
-                            blurRadius: 8,
-                            offset: const Offset(0, 4),
-                          ),
-                        ],
-                      ),
-                      child: isSelected
-                          ? const Center(
-                              child: Icon(
-                                Icons.check_rounded,
-                                color: Colors.white,
-                                size: 24,
-                              ),
-                            )
-                          : null,
-                    ),
-                  ),
-                );
-              },
-            ),
-
-            const SizedBox(height: 16),
-
-            // Reset to Default
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                onPressed: () {
-                  themeProvider.resetPrimaryColor();
-                },
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: AppTheme.primaryColor,
-                  side: BorderSide(color: AppTheme.primaryColor),
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: const Text(
-                  'Reset to Default',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ),
-          ],
         ),
       ),
     );
@@ -547,13 +386,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Text(
                   'API Configuration',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ],
             ),
             const SizedBox(height: 16),
-
+            
             // NewsAPI Key
             _buildApiKeyField(
               'NewsAPI Key',
@@ -561,9 +400,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               _newsApiController,
               Icons.article_rounded,
             ),
-
+            
             const SizedBox(height: 12),
-
+            
             // Guardian API Key
             _buildApiKeyField(
               'Guardian API Key',
@@ -571,9 +410,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               _guardianController,
               Icons.library_books_rounded,
             ),
-
+            
             const SizedBox(height: 12),
-
+            
             // NewsData.io Key
             _buildApiKeyField(
               'NewsData.io Key',
@@ -581,9 +420,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               _newsDataController,
               Icons.public_rounded,
             ),
-
+            
             const SizedBox(height: 20),
-
+            
             // Save Button
             SizedBox(
               width: double.infinity,
@@ -594,9 +433,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     'guardian': _guardianController.text.trim(),
                     'newsdata': _newsDataController.text.trim(),
                   };
-
+                  
                   final success = await authProvider.storeApiKeys(keys);
-
+                  
                   if (success) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
@@ -611,8 +450,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text(
-                            'Failed to save keys: ${authProvider.errorMessage}'),
+                        content: Text('Failed to save keys: ${authProvider.errorMessage}'),
                         backgroundColor: AppTheme.errorColor,
                         behavior: SnackBarBehavior.floating,
                         shape: RoundedRectangleBorder(
@@ -646,8 +484,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Widget _buildApiKeyField(String label, String hint,
-      TextEditingController controller, IconData icon) {
+  Widget _buildApiKeyField(String label, String hint, TextEditingController controller, IconData icon) {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
@@ -660,8 +497,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
         filled: true,
         fillColor: Theme.of(context).cardTheme.color,
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       ),
       obscureText: true,
     );
@@ -687,12 +523,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Text(
                   'Authentication',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ],
             ),
             const SizedBox(height: 16),
+            
             if (!authProvider.isLoggedIn)
               SizedBox(
                 width: double.infinity,
@@ -774,22 +611,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
           Text(
             'News Hub Ultra',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context)
-                      .textTheme
-                      .bodyMedium
-                      ?.color
-                      ?.withOpacity(0.6),
-                ),
+              color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
+            ),
           ),
           Text(
             'Version 1.0.0 • Build 1',
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: Theme.of(context)
-                      .textTheme
-                      .bodySmall
-                      ?.color
-                      ?.withOpacity(0.4),
-                ),
+              color: Theme.of(context).textTheme.bodySmall?.color?.withOpacity(0.4),
+            ),
           ),
         ],
       ),
