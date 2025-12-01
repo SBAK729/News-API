@@ -53,26 +53,36 @@ class _SettingsScreenState extends State<SettingsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // App Info Card
                   _buildAppInfoCard(context),
 
+<<<<<<< HEAD
                   const SizedBox(height: 24),
 
                   // API Status Card
+=======
+                  const SizedBox(height: 22),
+
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
                   _buildApiStatusCard(newsProvider),
 
                   const SizedBox(height: 24),
 
+<<<<<<< HEAD
                   // Theme Settings Card
+=======
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
                   _buildThemeCard(themeProvider),
 
                   const SizedBox(height: 24),
 
+<<<<<<< HEAD
                   // Primary Colors Card
                   _buildPrimaryColorsCard(themeProvider),
 
                   const SizedBox(height: 24),
 
+=======
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
                   // API Configuration Card
                   _buildApiConfigCard(authProvider),
 
@@ -130,12 +140,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   Text(
                     'Your personalized news aggregator',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+<<<<<<< HEAD
                           color: Theme.of(context)
                               .textTheme
                               .bodyMedium
                               ?.color
                               ?.withOpacity(0.7),
                         ),
+=======
+                      color: Theme.of(
+                        context,
+                      ).textTheme.bodyMedium?.color?.withOpacity(0.7),
+                    ),
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
                   ),
                 ],
               ),
@@ -159,17 +176,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
           children: [
             Row(
               children: [
-                Icon(
-                  Icons.api_rounded,
-                  color: AppTheme.primaryColor,
-                  size: 24,
-                ),
+                Icon(Icons.api_rounded, color: AppTheme.primaryColor, size: 24),
                 const SizedBox(width: 12),
                 Text(
                   'API Status',
+<<<<<<< HEAD
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.w700,
                       ),
+=======
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
                 ),
               ],
             ),
@@ -204,7 +223,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Widget _buildStatusItem(
+<<<<<<< HEAD
       String title, String subtitle, IconData icon, Color color) {
+=======
+    String title,
+    String subtitle,
+    IconData icon,
+    Color color,
+  ) {
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
     return Row(
       children: [
         Container(
@@ -222,19 +249,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
             children: [
               Text(
                 title,
+<<<<<<< HEAD
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
+=======
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
               ),
               Text(
                 subtitle,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+<<<<<<< HEAD
                       color: Theme.of(context)
                           .textTheme
                           .bodyMedium
                           ?.color
                           ?.withOpacity(0.6),
                     ),
+=======
+                  color: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium?.color?.withOpacity(0.6),
+                ),
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
               ),
             ],
           ),
@@ -292,9 +332,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 const SizedBox(width: 12),
                 Text(
                   'Theme',
+<<<<<<< HEAD
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.w700,
                       ),
+=======
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
                 ),
               ],
             ),
@@ -331,8 +377,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
+<<<<<<< HEAD
   Widget _buildThemeOption(String title, IconData icon, ThemeMode mode,
       ThemeProvider themeProvider) {
+=======
+  Widget _buildThemeOption(
+    String title,
+    IconData icon,
+    ThemeMode mode,
+    ThemeProvider themeProvider,
+  ) {
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
     final isSelected = themeProvider.themeMode == mode;
 
     return Material(
@@ -360,11 +415,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 icon,
                 color: isSelected
                     ? AppTheme.primaryColor
+<<<<<<< HEAD
                     : Theme.of(context)
                         .textTheme
                         .bodyMedium
                         ?.color
                         ?.withOpacity(0.6),
+=======
+                    : Theme.of(
+                        context,
+                      ).textTheme.bodyMedium?.color?.withOpacity(0.6),
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
                 size: 24,
               ),
               const SizedBox(width: 12),
@@ -546,9 +607,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 const SizedBox(width: 12),
                 Text(
                   'API Configuration',
+<<<<<<< HEAD
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.w700,
                       ),
+=======
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
                 ),
               ],
             ),
@@ -612,7 +679,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(
+<<<<<<< HEAD
                             'Failed to save keys: ${authProvider.errorMessage}'),
+=======
+                          'Failed to save keys: ${authProvider.errorMessage}',
+                        ),
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
                         backgroundColor: AppTheme.errorColor,
                         behavior: SnackBarBehavior.floating,
                         shape: RoundedRectangleBorder(
@@ -633,10 +705,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 child: const Text(
                   'Save API Keys',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                  ),
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
                 ),
               ),
             ),
@@ -646,8 +715,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
+<<<<<<< HEAD
   Widget _buildApiKeyField(String label, String hint,
       TextEditingController controller, IconData icon) {
+=======
+  Widget _buildApiKeyField(
+    String label,
+    String hint,
+    TextEditingController controller,
+    IconData icon,
+  ) {
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
     return TextField(
       controller: controller,
       decoration: InputDecoration(
@@ -660,8 +738,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
         filled: true,
         fillColor: Theme.of(context).cardTheme.color,
+<<<<<<< HEAD
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+=======
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 16,
+        ),
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
       ),
       obscureText: true,
     );
@@ -686,13 +771,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 const SizedBox(width: 12),
                 Text(
                   'Authentication',
+<<<<<<< HEAD
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.w700,
                       ),
+=======
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
                 ),
               ],
             ),
             const SizedBox(height: 16),
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
             if (!authProvider.isLoggedIn)
               SizedBox(
                 width: double.infinity,
@@ -774,22 +869,36 @@ class _SettingsScreenState extends State<SettingsScreen> {
           Text(
             'News Hub Ultra',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+<<<<<<< HEAD
                   color: Theme.of(context)
                       .textTheme
                       .bodyMedium
                       ?.color
                       ?.withOpacity(0.6),
                 ),
+=======
+              color: Theme.of(
+                context,
+              ).textTheme.bodyMedium?.color?.withOpacity(0.6),
+            ),
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
           ),
           Text(
             'Version 1.0.0 • Build 1',
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
+<<<<<<< HEAD
                   color: Theme.of(context)
                       .textTheme
                       .bodySmall
                       ?.color
                       ?.withOpacity(0.4),
                 ),
+=======
+              color: Theme.of(
+                context,
+              ).textTheme.bodySmall?.color?.withOpacity(0.4),
+            ),
+>>>>>>> 6c4f03d46cd36d4f39d7558e42adb61bf7d80159
           ),
         ],
       ),
