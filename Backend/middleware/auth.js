@@ -4,6 +4,8 @@ import blacklist from "../utils/tokenBlacklist.js";
 // JWT Authentication Middleware
 export const auth = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
+  // debug: log token for troubleshooting
+  //console.log("Auth token:", token);
 
   if (!token)
     return res.status(401).json({ msg: "Please Login to access Resource!" });
